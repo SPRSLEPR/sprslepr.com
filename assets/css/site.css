@@ -109,7 +109,7 @@
 .sps-moon img{position:absolute;left:-2%;bottom:-14%;width:104%;height:auto;}
 .sps-about-body{display:flex;flex-direction:column;gap:22px;}
 .sps-about-body p{margin:0;font-size:20px;line-height:1.65;}
-.sps-work{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding-bottom:96px;}
+.sps-work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;padding-bottom:96px;}
 .sps-work .sps-card h2{font-family:'Savannah','Fredoka',sans-serif;font-weight:400;font-size:40px;line-height:1;margin:0;}
 .sps-links{list-style:none;margin:0;padding:0;}
 .sps-links li{border-top:2px solid var(--night);}
