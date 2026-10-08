@@ -4,7 +4,6 @@
 - `index.html`: homepage (featured guide + the index)
 - `guides/index.html`: all guides grouped by topic
 - `guides/_template.html`: copy this for every new guide
-- `guides/turn-off-iphone-settings.html`: example guide
 - `about.html`, `404.html`
 - `assets/css/site.css` · `assets/fonts/` · `assets/img/`
 - `CNAME` (sprslepr.com) · `.nojekyll`
