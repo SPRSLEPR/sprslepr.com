@@ -6,6 +6,7 @@
 - `guides/_template.html`: copy this for every new guide
 - `about.html`, `404.html`
 - `assets/css/site.css` · `assets/fonts/` · `assets/img/`
+- `assets/img/mascot/tech/`: 25 original transparent tech poses saved for future SPRSLEPR branding. Reuse these assets for future guides and pages; only two appear in the current guide empty states.
 - `CNAME` (sprslepr.com) · `.nojekyll`
 
 ## Publish
