@@ -82,6 +82,15 @@
 .sps-path{border:2px solid var(--night);border-radius:18px;padding:18px 22px;font-family:'Space Mono',monospace;font-size:16px;overflow-wrap:anywhere;}
 .sps-code{margin:0;background:var(--deep);color:var(--paper);border-radius:18px;padding:22px 26px;font-family:'Space Mono',monospace;font-size:15px;line-height:1.7;overflow-x:auto;white-space:pre;}
 .sps-code .k{color:#FF8A47;}.sps-code .t{color:var(--lav);}.sps-code .s{color:#9FE3B4;}.sps-code .c{color:#8C7FB0;font-style:italic;}
+.sps-code{border:1px solid var(--dusk);tab-size:4;}
+.sps-code code{font:inherit;color:inherit;white-space:inherit;}
+.sps-code .token.comment{color:#B0A1C6;font-style:italic;}
+.sps-code .token.keyword,.sps-code .token.boolean{color:#FF9A5C;}
+.sps-code .token.string,.sps-code .token.char{color:#9FE3B4;}
+.sps-code .token.number,.sps-code .token.constant{color:#F2C879;}
+.sps-code .token.class-name,.sps-code .token.builtin,.sps-code .token.function,.sps-code .token.attr-name{color:#C6AEF2;}
+.sps-code .token.operator,.sps-code .token.punctuation{color:var(--lav);}
+.sps-code ::selection{background:var(--dusk);color:var(--paper);}
 .sps-code mark{background:rgba(255,107,26,.22);color:inherit;border-radius:4px;padding:1px 4px;}
 .sps-code-label{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.1em;color:var(--muted);margin-bottom:-14px;}
 .sps-tip{display:flex;gap:20px;align-items:center;background:var(--lav-soft);border-radius:24px;padding:20px 26px;}

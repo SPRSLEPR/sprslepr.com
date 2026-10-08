@@ -23,6 +23,16 @@
 2. Add a row to the top of the index in `index.html` and under the right topic in `guides/index.html`.
 3. Optional: point the homepage hero at it.
 
+## Swift code blocks
+The guide template includes locally hosted PrismJS 1.30.0 (MIT licensed) with Swift highlighting. Paste escaped code into:
+
+```html
+<div class="sps-code-label">SWIFT</div>
+<pre class="sps-code"><code class="language-swift">let name = "Super Sleeper"</code></pre>
+```
+
+Escape `&` as `&amp;` and `<` as `&lt;` in HTML code blocks. Highlighting happens automatically, using the site's dark purple background and orange, lavender, mint, and gold accents.
+
 ## To do
 - Replace `assets/img/favicon.png` and `og-banner.png` if you want different ones.
 - Check the Savannah font license allows web use.
