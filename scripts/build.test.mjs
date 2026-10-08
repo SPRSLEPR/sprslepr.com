@@ -35,7 +35,8 @@ test('Markdown produces styled Swift, images, escaped metadata, and unique ancho
   assert.match(output, /src="\/assets\/img\/posts\/sleeper.png"/);
   assert.match(output, /id="try-it"/);
   assert.match(output, /id="try-it-2"/);
-  assert.match(output, /href="#try-it-2"/);
+  assert.doesNotMatch(output, /class="sps-side sps-toc"/);
+  assert.match(output, />Oct 2026<\/time>/);
   assert.doesNotMatch(output, /\{\{[A-Z_]+\}\}/);
 });
 
@@ -65,7 +66,8 @@ test('build publishes the right topic and homepage, excluding drafts and sample 
     assert.match(listing, /href="greeting.html"/);
     assert.match(listing, /id="midnight-snacks"/);
     assert.match(listing, /1 POST/);
-    assert.doesNotMatch(listing, /id="night-shift"|id="night-terrors"|No Swift sleepers yet/);
+    assert.match(listing, /No night shift yet/);
+    assert.match(listing, /No night terrors yet/);
     const home = await readFile(path.join(root, '_site/index.html'), 'utf8');
     assert.match(home, /LATEST SLEEPER/);
     assert.match(home, /guides\/greeting.html/);
@@ -79,7 +81,7 @@ test('build publishes the right topic and homepage, excluding drafts and sample 
 });
 
 
-test('only populated series appear, with actual counts and featured content', async () => {
+test('all series appear, with empty states, actual counts and featured content', async () => {
   const template = await readFile('guides/index.html', 'utf8');
   const snack = readPost(source, 'greeting.md');
   const howto = readPost(source.replace('topic: ios', 'topic: swift') + '\nDevice guide.', 'device-guide.md');
@@ -89,9 +91,12 @@ test('only populated series appear, with actual counts and featured content', as
   const output = renderSleepers([snack, howto], template);
   assert.match(output, /id="midnight-snacks"/);
   assert.match(output, /id="night-shift"/);
-  assert.doesNotMatch(output, /id="night-terrors"/);
+  assert.match(output, /id="night-terrors"/);
+  assert.match(output, /No night terrors yet/);
+  assert.match(output, /0 POSTS/);
   assert.match(output, /href="device-guide.html">Read the how-to/);
   assert.match(output, /1 &lt; 2/);
   const empty = renderSleepers([], template);
-  assert.doesNotMatch(empty, /class="sps-sleeper-feature|class="sps-sleeper-series/);
+  assert.doesNotMatch(empty, /class="sps-sleeper-feature/);
+  assert.equal((empty.match(/class="sps-empty"/g) || []).length, 3);
 });

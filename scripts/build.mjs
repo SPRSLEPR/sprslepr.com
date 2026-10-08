@@ -8,7 +8,7 @@ const topics = { ios: 'iOS', swift: 'Swift' };
 const themes = ['night', 'paper', 'moonlight', 'xcode', 'dawn', 'terminal', 'ink', 'lights-out'];
 const series = {
   'midnight-snacks': { first: 'Midnight', last: 'Snacks', description: 'Small bites of code. Copy, paste, ship.', action: 'Read the snack' },
-  'night-shift': { first: 'Night', last: 'Shift', description: 'Hands-on how-tos for your devices.', action: 'Read the how-to' },
+  'night-shift': { first: 'Night', last: 'Shift', description: 'Hands-on how-tos.', action: 'Read the how-to' },
   'night-terrors': { first: 'Night', last: 'Terrors', description: "Bugs I've found, how to trigger them, and the workaround.", action: 'Read the fix' }
 };
 const readingTime = post => post.read_time || Math.max(1, Math.ceil(post.body.split(/\s+/).length / 200));
@@ -64,6 +64,7 @@ export function renderPost(post, template) {
   const values = {
     TITLE: escape(post.title), TITLE_DISPLAY: escape(post.title).replace(/([^ ]+)$/, '<span class="sps-orange">$1</span>'), SUMMARY: escape(post.summary), TOPIC: topics[post.topic],
     SERIES_ID: post.series, DATE: escape(post.date),
+    DATE_DISPLAY: new Date(`${post.date}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' }),
     READ_TIME: readingTime(post),
     BODY: body,
     TOC: headings.length ? `<aside class="sps-side sps-toc"><div class="sps-card"><div class="sps-label">IN THIS SLEEPER</div><ol>${headings.join('')}</ol></div></aside>` : '',
@@ -93,7 +94,6 @@ export function renderSleepers(posts, template) {
   }
   const sections = Object.entries(series).map(([key, group]) => {
     const entries = posts.filter(post => post.series === key);
-    if (!entries.length) return '';
     const categories = [...new Set(entries.map(post => post.category || topics[post.topic]))];
     let number = 0;
     const rows = categories.map(category => {
@@ -103,7 +103,7 @@ export function renderSleepers(posts, template) {
         return `<li><span class="sps-sleeper-number">${String(++number).padStart(2, '0')}</span>${title}<span class="sps-sleeper-time">${readingTime(post)} MIN</span></li>`;
       }).join('')}</ol>`;
     }).join('');
-    return `<section class="sps-sleeper-series" id="${key}"><div class="sps-sleeper-series-heading"><div><h2 class="sps-display">${group.first} <span class="sps-orange">${group.last}</span></h2><p>${group.description}</p></div><span class="sps-sleeper-count">${entries.length} ${entries.length === 1 ? 'POST' : 'POSTS'}</span></div>${rows}</section>`;
+    return `<section class="sps-sleeper-series" id="${key}"><div class="sps-sleeper-series-heading"><div><h2 class="sps-display">${group.first} <span class="sps-orange">${group.last}</span></h2><p>${group.description}</p></div><span class="sps-sleeper-count">${entries.length} ${entries.length === 1 ? 'POST' : 'POSTS'}</span></div>${rows || `<div class="sps-empty">No ${group.first.toLowerCase()} ${group.last.toLowerCase()} yet. Stay tuned.</div>`}</section>`;
   }).join('');
   return template.replace('<!-- sleepers:feature -->', feature).replace('<!-- sleepers:series -->', sections);
 }

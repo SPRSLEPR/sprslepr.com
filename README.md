@@ -43,6 +43,6 @@ Theme names: `night`, `paper`, `moonlight`, `xcode`, `dawn`, `terminal`, `ink`, 
 
 Post source lives in `content/posts/`; `.pages.yml` defines the editor. `templates/post.html` controls the post layout. `scripts/build.mjs` builds it. `.github/workflows/publish.yml` publishes to GitHub Pages on each push to `main`.
 
-The builder copies only public HTML and assets. Source content, local samples, and editor configuration are excluded. Existing `index.html`, `about.html`, and `404.html` remain editable HTML. `guides/index.html` contains insertion points for the featured post and automatically generated series lists. Empty series are omitted. The newest post is featured unless a post has **Feature this post** enabled.
+The builder copies only public HTML and assets. Source content, local samples, and editor configuration are excluded. Existing `index.html`, `about.html`, and `404.html` remain editable HTML. `guides/index.html` contains insertion points for the featured post and automatically generated series lists. Empty series show an empty state. The newest post is featured unless a post has **Feature this post** enabled.
 
 Swift highlighting uses locally hosted PrismJS 1.30.0 (MIT licensed). The original mascot poses are in `assets/img/mascot/tech/`. Reuse those images for future posts.

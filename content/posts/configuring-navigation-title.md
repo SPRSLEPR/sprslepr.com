@@ -20,6 +20,12 @@ preview_code: |
       Attributes.navigationBarTitleAttributes
 ---
 
+<div class="sps-post-comparison">
+<figure><img src="../assets/img/posts/navigation-title/before.png" alt="Affirmation screen before customization, with a large, left-aligned title in the default bold system font." loading="lazy"><figcaption>Before · Default title</figcaption></figure>
+<figure><img src="../assets/img/posts/navigation-title/after-large.png" alt="Affirmation screen after customization, with a large, left-aligned title in a tall serif font." loading="lazy"><figcaption>After · Large title</figcaption></figure>
+<figure><img src="../assets/img/posts/navigation-title/after-inline.png" alt="Affirmation screen after scrolling, with the custom serif title centered in the compact navigation bar." loading="lazy"><figcaption>After · Inline title</figcaption></figure>
+</div>
+
 ## 1. Set up the appearance
 
 Build one `UINavigationBarAppearance` with a transparent background. Give the back button the same title font in every state, set the large and inline title fonts, then apply it to the standard, compact and scroll-edge appearances.
