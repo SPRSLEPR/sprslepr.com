@@ -33,6 +33,17 @@ The guide template includes locally hosted PrismJS 1.30.0 (MIT licensed) with Sw
 
 Escape `&` as `&amp;` and `<` as `&lt;` in HTML code blocks. Highlighting happens automatically, using the site's dark purple background and orange, lavender, mint, and gold accents.
 
+## Saved code themes
+Reference screenshots are in `docs/design/code-snippets/`. The guide template loads `assets/css/code-themes.css` with eight optional palettes: `night`, `paper`, `moonlight`, `xcode`, `dawn`, `terminal` (3AM Terminal), `ink`, and `lights-out`.
+
+Choose a theme per snippet; omit `data-theme` to keep the current default:
+
+```html
+<pre class="sps-code" data-theme="dawn"><code class="language-swift">let name = "Super Sleeper"</code></pre>
+```
+
+These are reusable color palettes. The screenshots also preserve ideas for future copy buttons, filename bars, line numbers, and highlighted lines.
+
 ## To do
 - Replace `assets/img/favicon.png` and `og-banner.png` if you want different ones.
 - Check the Savannah font license allows web use.
