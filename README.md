@@ -4,10 +4,10 @@
 
 1. Open [Pages CMS](https://app.pagescms.org), sign in with GitHub, and install its GitHub App for **SPRSLEPR/sprslepr.com**.
 2. Open this repository on the `main` branch and choose **Posts → Add**.
-3. Enter the title, short description, topic (iOS or Swift), and post date.
+3. Enter the title, short description, topic, series (Midnight Snacks, Night Shift, or Night Terrors), and post date.
 4. Write in **Post content**. Use the image button to upload images. Add a code block and choose `swift` as its language; Source mode also accepts fenced Markdown.
 5. Choose a code style. Leave **Status** as **Draft** while writing.
-6. Set **Status** to **Published** and save when ready. GitHub builds the post, adds it under its topic, updates the homepage's latest-post link, and publishes the site automatically.
+6. Set **Status** to **Published** and save when ready. GitHub builds the post, adds it under its series, updates the homepage's latest-post link, and publishes the site automatically.
 
 To unpublish a post, change its status back to Draft and save. The filename determines its URL, so avoid renaming it after publication. The post date controls sorting, not scheduled publication.
 
@@ -24,7 +24,7 @@ print(name)
 ```
 ````
 
-Code highlighting is automatic. Styles: **Night**, **Paper**, **Moonlight**, **Xcode-ish**, **Dawn**, **3AM Terminal**, **Ink**, and **Lights Out**.
+Code highlighting is automatic. A code block can optionally include a filename, such as `swift NavigationTitle.swift`, to display it above the snippet. Each block has a Copy button. Styles: **Night**, **Paper**, **Moonlight**, **Xcode-ish**, **Dawn**, **3AM Terminal**, **Ink**, and **Lights Out**.
 
 For an individual snippet in an HTML page:
 
@@ -43,6 +43,6 @@ Theme names: `night`, `paper`, `moonlight`, `xcode`, `dawn`, `terminal`, `ink`, 
 
 Post source lives in `content/posts/`; `.pages.yml` defines the editor. `templates/post.html` controls the post layout. `scripts/build.mjs` builds it. `.github/workflows/publish.yml` publishes to GitHub Pages on each push to `main`.
 
-The builder copies only public HTML and assets. Source content, local samples, and editor configuration are excluded. Existing `index.html`, `about.html`, and `404.html` remain editable HTML. `guides/index.html` contains marked areas for automatically generated topic lists.
+The builder copies only public HTML and assets. Source content, local samples, and editor configuration are excluded. Existing `index.html`, `about.html`, and `404.html` remain editable HTML. `guides/index.html` contains insertion points for the featured post and automatically generated series lists. Empty series are omitted. The newest post is featured unless a post has **Feature this post** enabled.
 
 Swift highlighting uses locally hosted PrismJS 1.30.0 (MIT licensed). The original mascot poses are in `assets/img/mascot/tech/`. Reuse those images for future posts.

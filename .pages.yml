@@ -16,7 +16,7 @@ content:
       field: create
     view:
       primary: title
-      fields: [title, topic, status, date]
+      fields: [title, series, status, date]
       sort: date
       order: desc
     fields:
@@ -50,6 +50,26 @@ content:
               label: Draft
             - name: published
               label: Published
+      - name: series
+        label: Series
+        type: select
+        required: true
+        default: midnight-snacks
+        options:
+          values:
+            - name: midnight-snacks
+              label: Midnight Snacks (code)
+            - name: night-shift
+              label: Night Shift (device how-tos)
+            - name: night-terrors
+              label: Night Terrors (bugs and fixes)
+      - name: category
+        label: Category (e.g. UIKit, SwiftUI, iPhone)
+        type: string
+      - name: featured
+        label: Feature this post
+        type: boolean
+        default: false
       - name: date
         label: Post date
         type: date
@@ -84,3 +104,12 @@ content:
         required: true
         options:
           format: markdown
+      - name: preview_code
+        label: Featured Swift excerpt (optional)
+        type: text
+      - name: code_filename
+        label: Code filename (optional)
+        type: string
+      - name: read_time
+        label: Reading time in minutes (optional)
+        type: number

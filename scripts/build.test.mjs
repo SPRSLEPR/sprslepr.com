@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtemp, mkdir, writeFile, cp, readFile, readdir, rm } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import { build, readPost, renderPost } from './build.mjs';
+import { build, readPost, renderPost, renderSleepers } from './build.mjs';
 
 const source = `---
 title: A greeting & a nap
@@ -63,8 +63,9 @@ test('build publishes the right topic and homepage, excluding drafts and sample 
     assert.deepEqual((await readdir(path.join(root, '_site/guides'))).sort(), ['greeting.html', 'index.html']);
     const listing = await readFile(path.join(root, '_site/guides/index.html'), 'utf8');
     assert.match(listing, /href="greeting.html"/);
-    assert.doesNotMatch(listing, /No iOS sleepers yet/);
-    assert.match(listing, /No Swift sleepers yet/);
+    assert.match(listing, /id="midnight-snacks"/);
+    assert.match(listing, /1 POST/);
+    assert.doesNotMatch(listing, /id="night-shift"|id="night-terrors"|No Swift sleepers yet/);
     const home = await readFile(path.join(root, '_site/index.html'), 'utf8');
     assert.match(home, /LATEST SLEEPER/);
     assert.match(home, /guides\/greeting.html/);
@@ -75,4 +76,22 @@ test('build publishes the right topic and homepage, excluding drafts and sample 
   } finally {
     await rm(root, { recursive: true, force: true });
   }
+});
+
+
+test('only populated series appear, with actual counts and featured content', async () => {
+  const template = await readFile('guides/index.html', 'utf8');
+  const snack = readPost(source, 'greeting.md');
+  const howto = readPost(source.replace('topic: ios', 'topic: swift') + '\nDevice guide.', 'device-guide.md');
+  howto.series = 'night-shift';
+  howto.category = 'iPhone';
+  howto.featured = true;
+  const output = renderSleepers([snack, howto], template);
+  assert.match(output, /id="midnight-snacks"/);
+  assert.match(output, /id="night-shift"/);
+  assert.doesNotMatch(output, /id="night-terrors"/);
+  assert.match(output, /href="device-guide.html">Read the how-to/);
+  assert.match(output, /1 &lt; 2/);
+  const empty = renderSleepers([], template);
+  assert.doesNotMatch(empty, /class="sps-sleeper-feature|class="sps-sleeper-series/);
 });

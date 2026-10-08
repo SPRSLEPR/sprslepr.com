@@ -9,9 +9,10 @@
 <meta property="og:description" content="{{SUMMARY}}">
 <meta property="og:image" content="https://sprslepr.com/assets/img/og-banner.png">
 <link rel="icon" href="../assets/img/favicon.png">
-<link rel="stylesheet" href="../assets/css/site.css?v=29">
-<link rel="stylesheet" href="../assets/css/code-themes.css?v=1">
+<link rel="stylesheet" href="../assets/css/site.css?v=30">
+<link rel="stylesheet" href="../assets/css/code-themes.css?v=2">
 <script src="../assets/js/prism-swift.js" defer></script>
+<script src="../assets/js/code-copy.js" defer></script>
 </head>
 <body class="sps">
 <header class="sps-header">
@@ -26,12 +27,12 @@
 <main>
   <div class="sps-wrap sps-guide" {{COLUMNS}}>
     <article class="sps-post">
-      <div class="sps-crumbs"><a href="index.html">Sleepers</a> / <a href="index.html#{{TOPIC_ID}}">{{TOPIC}}</a></div>
-      <h1 class="sps-display">{{TITLE}}</h1>
+      <div class="sps-crumbs"><a href="index.html">Sleepers</a> / <a href="index.html#{{SERIES_ID}}">{{TOPIC}}</a></div>
+      <h1 class="sps-display">{{TITLE_DISPLAY}}</h1>
       <div class="sps-meta"><time datetime="{{DATE}}">{{DATE}}</time><span>{{READ_TIME}} MIN READ</span></div>
       <div class="sps-tldr"><div class="sps-label">THE QUICK VERSION</div><p>{{SUMMARY}}</p></div>
       {{BODY}}
-      <p><a class="sps-pill sps-pill--line" href="index.html#{{TOPIC_ID}}">Back to {{TOPIC}} sleepers →</a></p>
+      <p><a class="sps-pill sps-pill--line" href="index.html#{{SERIES_ID}}">Back to {{TOPIC}} sleepers →</a></p>
     </article>
     {{TOC}}
   </div>
