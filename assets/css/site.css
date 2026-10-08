@@ -99,6 +99,8 @@
 }
 
 /* Static-site extras */
+.sps-guides-heading{display:flex;align-items:center;gap:16px;}
+.sps-guides-heading img{width:64px;height:auto;flex:none;}
 .sps-about-poses{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:clamp(16px,4vw,40px);padding:28px;background:var(--lav-soft);border-radius:24px;}
 .sps-about-poses img{width:clamp(100px,18vw,180px);max-width:100%;height:auto;}
 .sps-page{padding-top:64px;padding-bottom:96px;display:flex;flex-direction:column;gap:28px;max-width:860px;}
