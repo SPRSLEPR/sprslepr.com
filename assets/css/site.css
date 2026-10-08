@@ -113,7 +113,7 @@
 .sps-work .sps-card h2{font-family:'Savannah','Fredoka',sans-serif;font-weight:400;font-size:40px;line-height:1;margin:0;}
 .sps-links{list-style:none;margin:0;padding:0;}
 .sps-links li{border-top:2px solid var(--night);}
-.sps-links a{display:flex;justify-content:space-between;gap:12px;padding:14px 0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:19px;line-height:1.25;}
+.sps-links a{display:flex;justify-content:space-between;gap:12px;padding:14px 0;font-family:'Nunito',sans-serif;font-weight:400;font-size:19px;line-height:1.25;}
 .sps-links a::after{content:'→';color:var(--orange-ink);flex:none;}
 .sps-connect{display:flex;flex-direction:column;gap:10px;align-items:stretch;}
 .sps-connect a{display:flex;justify-content:space-between;border:2px solid var(--night);border-radius:999px;padding:10px 18px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:17px;}
