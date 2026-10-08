@@ -1,49 +1,48 @@
-# sprslepr.com: static site for GitHub Pages
+# SPRSLEPR
 
-## Structure
-- `index.html`: homepage (featured guide + the index)
-- `guides/index.html`: all guides grouped by topic
-- `guides/_template.html`: copy this for every new guide
-- `about.html`, `404.html`
-- `assets/css/site.css` · `assets/fonts/` · `assets/img/`
-- `assets/img/mascot/tech/`: 25 original transparent tech poses saved for future SPRSLEPR branding. Reuse these assets for future guides and pages; only two appear in the current guide empty states.
-- `CNAME` (sprslepr.com) · `.nojekyll`
+## Write and publish a post
 
-## Publish
-1. Create a GitHub repo (e.g. `sprslepr.com`) and upload **the contents of this folder** to the root of the repo.
-2. Repo → Settings → Pages → Source: **Deploy from a branch** → `main` / `(root)` → Save.
-3. Custom domain: `sprslepr.com` (already in CNAME) → tick **Enforce HTTPS** once it's available.
-4. At your domain registrar, add DNS records:
-   - `A` records for `@` → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
-   - `CNAME` for `www` → `YOUR-GITHUB-USERNAME.github.io`
-   DNS can take up to 24h.
+1. Open [Pages CMS](https://app.pagescms.org), sign in with GitHub, and install its GitHub App for **SPRSLEPR/sprslepr.com**.
+2. Open this repository on the `main` branch and choose **Posts → Add**.
+3. Enter the title, short description, topic (iOS or Swift), and post date.
+4. Write in **Post content**. Use the image button to upload images. Add a code block and choose `swift` as its language; Source mode also accepts fenced Markdown.
+5. Choose a code style. Leave **Status** as **Draft** while writing.
+6. Set **Status** to **Published** and save when ready. GitHub builds the post, adds it under its topic, updates the homepage's latest-post link, and publishes the site automatically.
 
-## Add a guide
-1. Copy `guides/_template.html` → `guides/your-slug.html` and fill every [BRACKET].
-2. Add a row to the top of the index in `index.html` and under the right topic in `guides/index.html`.
-3. Optional: point the homepage hero at it.
+To unpublish a post, change its status back to Draft and save. The filename determines its URL, so avoid renaming it after publication. The post date controls sorting, not scheduled publication.
 
-## Swift code blocks
-The guide template includes locally hosted PrismJS 1.30.0 (MIT licensed) with Swift highlighting. Paste escaped code into:
+Drafts are excluded from the published website. This is a public GitHub repository, so their source files are still visible on GitHub. The local sample page is excluded from both Git and the deployment.
 
-```html
-<div class="sps-code-label">SWIFT</div>
-<pre class="sps-code"><code class="language-swift">let name = "Super Sleeper"</code></pre>
+## Swift code
+
+In the editor's Source mode:
+
+````markdown
+```swift
+let name = "Super Sleeper"
+print(name)
 ```
+````
 
-Escape `&` as `&amp;` and `<` as `&lt;` in HTML code blocks. Highlighting happens automatically, using the site's dark purple background and orange, lavender, mint, and gold accents.
+Code highlighting is automatic. Styles: **Night**, **Paper**, **Moonlight**, **Xcode-ish**, **Dawn**, **3AM Terminal**, **Ink**, and **Lights Out**.
 
-## Saved code themes
-Reference screenshots are in `docs/design/code-snippets/`. The guide template loads `assets/css/code-themes.css` with eight optional palettes: `night`, `paper`, `moonlight`, `xcode`, `dawn`, `terminal` (3AM Terminal), `ink`, and `lights-out`.
-
-Choose a theme per snippet; omit `data-theme` to keep the current default:
+For an individual snippet in an HTML page:
 
 ```html
 <pre class="sps-code" data-theme="dawn"><code class="language-swift">let name = "Super Sleeper"</code></pre>
 ```
 
-These are reusable color palettes. The screenshots also preserve ideas for future copy buttons, filename bars, line numbers, and highlighted lines.
+Theme names: `night`, `paper`, `moonlight`, `xcode`, `dawn`, `terminal`, `ink`, `lights-out`. Reference screenshots are saved locally in `docs/design/code-snippets/` and excluded from Git.
 
-## To do
-- Replace `assets/img/favicon.png` and `og-banner.png` if you want different ones.
-- Check the Savannah font license allows web use.
+## Development
+
+- `npm ci`: install the Markdown and YAML parsers.
+- `npm test`: check rendering, drafts, topic lists, and publishing exclusions.
+- `npm run build`: generate the public site in `_site/`.
+- `python3 -m http.server 8080 --directory _site`: preview at http://localhost:8080.
+
+Post source lives in `content/posts/`; `.pages.yml` defines the editor. `templates/post.html` controls the post layout. `scripts/build.mjs` builds it. `.github/workflows/publish.yml` publishes to GitHub Pages on each push to `main`.
+
+The builder copies only public HTML and assets. Source content, local samples, and editor configuration are excluded. Existing `index.html`, `about.html`, and `404.html` remain editable HTML. `guides/index.html` contains marked areas for automatically generated topic lists.
+
+Swift highlighting uses locally hosted PrismJS 1.30.0 (MIT licensed). The original mascot poses are in `assets/img/mascot/tech/`. Reuse those images for future posts.

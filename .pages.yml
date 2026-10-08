@@ -1,0 +1,86 @@
+media:
+  input: assets/img/posts
+  output: /assets/img/posts
+  categories: [image]
+  rename: safe
+content:
+  - name: posts
+    label: Posts
+    type: collection
+    path: content/posts
+    format: yaml-frontmatter
+    subfolders: false
+    exclude: [.gitkeep]
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, topic, status, date]
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: summary
+        label: Short description
+        type: text
+        required: true
+      - name: topic
+        label: Topic
+        type: select
+        required: true
+        default: ios
+        options:
+          values:
+            - name: ios
+              label: iOS
+            - name: swift
+              label: Swift
+      - name: status
+        label: Status
+        type: select
+        default: draft
+        required: true
+        options:
+          values:
+            - name: draft
+              label: Draft
+            - name: published
+              label: Published
+      - name: date
+        label: Post date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: code_theme
+        label: Code style
+        type: select
+        default: night
+        options:
+          values:
+            - name: night
+              label: Night
+            - name: paper
+              label: Paper
+            - name: moonlight
+              label: Moonlight
+            - name: xcode
+              label: Xcode-ish
+            - name: dawn
+              label: Dawn
+            - name: terminal
+              label: 3AM Terminal
+            - name: ink
+              label: Ink
+            - name: lights-out
+              label: Lights Out
+      - name: body
+        label: Post content
+        type: rich-text
+        required: true
+        options:
+          format: markdown
