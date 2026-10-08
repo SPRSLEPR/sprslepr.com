@@ -113,7 +113,13 @@
 .sps-about .sps-label{color:var(--orange-ink);letter-spacing:0;font-size:15px;}
 .sps-about .sps-card--night p{color:var(--paper)!important;}
 .sps-work{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;padding-bottom:96px;}
-.sps-work h2{font-family:'Savannah','Fredoka',sans-serif;font-weight:400;font-size:40px;line-height:1;margin:0;}
+.sps-work h2{font-family:'Savannah','Fredoka',sans-serif;font-weight:400;font-size:40px;line-height:1;margin:0;color:var(--dusk);}
+.sps-app-previews{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:28px;}
+.sps-app-preview{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:center;gap:12px 16px;}
+.sps-app-preview img{border-radius:14px;}
+.sps-app-preview strong{font-family:'Fredoka',sans-serif;font-size:22px;line-height:1.2;}
+.sps-app-preview__description,.sps-app-preview__store{grid-column:1/-1;font-size:16px;line-height:1.5;}
+.sps-app-preview__store{color:var(--orange-ink);font-weight:700;text-decoration:underline;text-underline-offset:4px;}
 .sps-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px;}
 .sps-links a{font-size:18px;line-height:1.4;text-decoration:underline;text-underline-offset:4px;}
 .sps-connect{display:flex;flex-direction:column;gap:16px;}
