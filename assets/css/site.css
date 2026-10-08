@@ -104,5 +104,5 @@
 .sps-page{padding-top:64px;padding-bottom:96px;display:flex;flex-direction:column;gap:28px;max-width:860px;}
 .sps-page p{margin:0;font-size:20px;line-height:1.65;}
 .sps-empty{border:2px dashed var(--muted);border-radius:24px;padding:28px;color:var(--muted);font-family:'Space Mono',monospace;font-size:14px;}
-.sps-empty--pose{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
-.sps-empty--pose img{width:100px;height:auto;flex:none;transform:rotate(4deg);}
+.sps-empty--pose{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;}
+.sps-empty--pose img{order:-1;width:100px;height:auto;flex:none;transform:rotate(4deg);}
