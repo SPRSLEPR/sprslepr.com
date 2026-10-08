@@ -68,7 +68,7 @@
 .sps-footer a:hover{color:var(--orange);}
 
 /* Guide page */
-.sps-guide{display:grid;grid-template-columns:minmax(0,760px) 320px;gap:80px;justify-content:center;padding-top:64px;padding-bottom:96px;}
+.sps-guide{display:grid;grid-template-columns:minmax(0,760px) 320px;gap:80px;justify-content:center;padding-top:28px;padding-bottom:96px;}
 .sps-guide article{display:flex;flex-direction:column;gap:26px;min-width:0;}
 .sps-crumbs{font-family:'Space Mono',monospace;font-size:14px;color:var(--muted);}
 .sps-guide h1{font-size:clamp(48px,6vw,76px);}
@@ -219,9 +219,11 @@
 .sps-empty--pose img{order:-1;width:100px;height:auto;flex:none;transform:rotate(4deg);}
 
 /* Article screenshots retain their full before/after context. */
-.sps-post-comparison{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0 36px;}
+.sps-post-comparison{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0 0;}
 .sps-post-comparison figure{margin:0;min-width:0;}
-.sps-post-comparison img{display:block;box-sizing:border-box;width:100%;height:auto;border:7px solid #17141e;border-radius:36px;box-shadow:0 0 0 1px #625e69,0 8px 20px rgba(30,21,53,.12);}
+.sps-phone-frame{display:block;position:relative;overflow:hidden;padding:7px;background:#17141e;border-radius:36px;box-shadow:0 0 0 1px #625e69,0 8px 20px rgba(30,21,53,.12);}
+.sps-phone-frame::after{content:"";position:absolute;top:calc(7px + 1.5%);left:28%;width:44%;height:4%;background:#080808;border-radius:999px;pointer-events:none;}
+.sps-post-comparison .sps-phone-frame img{display:block;width:100%;height:auto;border:0;border-radius:29px;}
 .sps-post-comparison figcaption{font-weight:700;margin-top:10px;font-size:13px;color:var(--dusk);text-align:center;}
 @media(max-width:600px){.sps-post-comparison{grid-template-columns:1fr;}.sps-post-comparison figure{width:100%;max-width:280px;margin-inline:auto;}}
 
@@ -237,3 +239,5 @@
 .sps-toc a:hover,.sps-toc a:focus-visible{color:var(--orange);}
 
 @media(min-width:760px){.sps-guide:has(.sps-toc){grid-template-columns:150px minmax(0,760px);gap:20px;}.sps-guide .sps-toc{grid-column:1;grid-row:1;}.sps-guide:has(.sps-toc) .sps-post{grid-column:2;grid-row:1;}}
+
+.sps-post-comparison+h2{margin-top:0;}

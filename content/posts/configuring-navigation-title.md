@@ -21,9 +21,9 @@ preview_code: |
 ---
 
 <div class="sps-post-comparison">
-<figure><img src="../assets/img/posts/navigation-title/before.png" alt="Affirmation screen before customization, with a large, left-aligned title in the default bold system font." loading="lazy"><figcaption>Before · Default title</figcaption></figure>
-<figure><img src="../assets/img/posts/navigation-title/after-large.png" alt="Affirmation screen after customization, with a large, left-aligned title in a tall serif font." loading="lazy"><figcaption>After · Large title</figcaption></figure>
-<figure><img src="../assets/img/posts/navigation-title/after-inline.png" alt="Affirmation screen after scrolling, with the custom serif title centered in the compact navigation bar." loading="lazy"><figcaption>After · Inline title</figcaption></figure>
+<figure><span class="sps-phone-frame"><img src="../assets/img/posts/navigation-title/before.png" alt="Affirmation screen before customization, with a large, left-aligned title in the default bold system font." loading="lazy"></span><figcaption>Before · Default title</figcaption></figure>
+<figure><span class="sps-phone-frame"><img src="../assets/img/posts/navigation-title/after-large.png" alt="Affirmation screen after customization, with a large, left-aligned title in a tall serif font." loading="lazy"></span><figcaption>After · Large title</figcaption></figure>
+<figure><span class="sps-phone-frame"><img src="../assets/img/posts/navigation-title/after-inline.png" alt="Affirmation screen after scrolling, with the custom serif title centered in the compact navigation bar." loading="lazy"></span><figcaption>After · Inline title</figcaption></figure>
 </div>
 
 ## 1. Set up the appearance
