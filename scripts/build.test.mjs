@@ -69,7 +69,13 @@ test('build publishes the right topic and homepage, excluding drafts and sample 
     assert.match(listing, /No night shift yet/);
     assert.match(listing, /No night terrors yet/);
     const home = await readFile(path.join(root, '_site/index.html'), 'utf8');
-    assert.match(home, /LATEST SLEEPER/);
+    assert.match(home, /Animating Strikethroughs in/);
+    assert.match(home, /i\.ytimg\.com\/vi\/Sel_snRzMTk\/maxresdefault\.jpg/);
+    assert.match(home, /youtube\.com\/shorts\/Sel_snRzMTk/);
+    assert.doesNotMatch(home, /<iframe/);
+    assert.match(home, /<h1 class="sps-display">Latest <span class="sps-orange">work<\/span><\/h1>/);
+    assert.match(home, /<h2 class="sps-display">A greeting &amp; a <span class="sps-orange">nap<\/span><\/h2>/);
+    assert.ok(home.indexOf('A greeting &amp; a') < home.indexOf('Animating Strikethroughs in'));
     assert.match(home, /guides\/greeting.html/);
     assert.ok(!(await readdir(path.join(root, '_site'))).includes('content'));
     await rm(path.join(root, 'content/posts/greeting.md'));

@@ -129,8 +129,9 @@ export async function build(root = process.cwd()) {
   for (const post of posts) await writeFile(path.join(output, 'guides', `${post.slug}.html`), renderPost(post, template));
   if (posts.length) {
     let homepage = await readFile(path.join(output, 'index.html'), 'utf8');
-    homepage = homepage.replace('COMING SOON', 'LATEST SLEEPER').replace('New sleepers are on the way.',
-      `<a href="guides/${posts[0].slug}.html">${escape(posts[0].title)} →</a>`);
+    const featured = posts.find(post => post.featured) || posts[0];
+    homepage = homepage.replace(/<!-- home:featured-sleeper:start -->[\s\S]*?<!-- home:featured-sleeper:end -->/,
+      `<!-- home:featured-sleeper:start --><h2 class="sps-display">${escape(featured.title).replace(/([^ ]+)$/, '<span class="sps-orange">$1</span>')}</h2><p>${escape(featured.summary)}</p><a class="sps-pill sps-pill--line" href="guides/${featured.slug}.html">Read the sleeper →</a><!-- home:featured-sleeper:end -->`);
     await writeFile(path.join(output, 'index.html'), homepage);
   }
   console.log(`Built ${posts.length} post(s). Drafts excluded.`);
